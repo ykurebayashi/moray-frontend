@@ -1,14 +1,36 @@
-// import { GeoJSON } from 'react-leaflet/GeoJSON';
-import { MapContainer } from 'react-leaflet/MapContainer';
-import { TileLayer } from 'react-leaflet/TileLayer';
-import 'leaflet/dist/leaflet.css';
+import { GeoJSON } from "react-leaflet/GeoJSON";
+import { MapContainer } from "react-leaflet/MapContainer";
+import { TileLayer } from "react-leaflet/TileLayer";
+import { useGetGeoJson } from "./query/useGetGeoJson";
+import { useGetPopulationGrowth } from "./query/useGetPopulation";
+import { useEffect, useState } from "react";
+import { Modal } from "./components/Modal";
+import "leaflet/dist/leaflet.css";
 
 function App() {
+  const { data: geojson } = useGetGeoJson();
+  const { data: populationJson } = useGetPopulationGrowth();
+
+  const [neighbourhood, setNeighbourhood] = useState(null);
+  const [usedPopulationData, setUsedPopulationData] = useState();
+
+  useEffect(() => {
+    if (neighbourhood) {
+      const result = populationJson.filter(
+        (element) => element.id_geometria === neighbourhood.id
+      );
+      setUsedPopulationData(result);
+    }
+  }, [neighbourhood, populationJson]);
+
   return (
     <>
       <MapContainer
-        style={{ height: '100vh' }}
-        bounds={[[-23.234708, -45.928813], [-23.198917, -45.900761]]}
+        style={{ height: "100vh", position: "relative" }}
+        bounds={[
+          [-23.234708, -45.928813],
+          [-23.198917, -45.900761],
+        ]}
         zoom={15}
       >
         <TileLayer
@@ -16,19 +38,25 @@ function App() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        {/* Componente que renderiza as geometrias dos bairros */}
-        {/* {geojson && (
+        {geojson && (
           <GeoJSON
             data={geojson}
-            style={{ color: '#6c58ff' }}
+            style={{ color: "#6c58ff" }}
             eventHandlers={{
               click: (event) => {
-                // Quando o usuário clicar em um bairro no mapa, essa função será executada
-                console.log('feature (bairro):', event.sourceTarget.feature);
+                const eventValue = event.sourceTarget.feature;
+                setNeighbourhood(eventValue.properties);
               },
             }}
           />
-        )} */}
+        )}
+
+        {!!neighbourhood && usedPopulationData && (
+          <Modal
+            neighbourhood={neighbourhood}
+            usedPopulationData={usedPopulationData}
+          />
+        )}
       </MapContainer>
     </>
   );
