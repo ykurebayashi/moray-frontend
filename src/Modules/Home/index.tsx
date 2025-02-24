@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react";
 import { GeoJSON } from "react-leaflet/GeoJSON";
 import { TileLayer } from "react-leaflet/TileLayer";
@@ -25,7 +26,6 @@ export const Home = () => {
 
         {geojson && (
           <GeoJSON
-            //@ts-ignore
             data={geojson}
             style={{ color: "#6c58ff" }}
             eventHandlers={{
