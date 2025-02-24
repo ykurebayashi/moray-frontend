@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useGetGeoJson } from "../query/useGetGeoJson";
+import { GetGeoJsonItemType, useGetGeoJson } from "../query/useGetGeoJson";
 import { useGetPopulationGrowth } from "../query/useGetPopulation";
 
 type NeighbourhoodType = {
@@ -16,7 +16,7 @@ export const useGetAppInfo = () => {
     null
   );
 
-  const usedPopulationData = useMemo(() => {
+  const usedPopulationData: GetGeoJsonItemType[] = useMemo(() => {
     if (!neighbourhood || !populationJson) return [];
 
     return populationJson.filter(

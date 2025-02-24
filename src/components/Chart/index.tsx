@@ -1,7 +1,11 @@
 import React from "react";
 import { MainContainer, SingleColumn } from "./style";
+import { GetGeoJsonItemType } from "../../query/useGetGeoJson";
 
-export const Chart = ({ data }) => {
+type ChartProps = {
+  data: GetGeoJsonItemType[];
+};
+export const Chart = ({ data }: ChartProps) => {
   const allValues = data?.map((element) => element.populacao);
   const highestValue = Math.max(...(allValues || []));
 

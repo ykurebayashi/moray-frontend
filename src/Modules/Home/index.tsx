@@ -10,6 +10,7 @@ import "leaflet/dist/leaflet.css";
 export const Home = () => {
   const { geojson, neighbourhood, setNeighbourhood, usedPopulationData } =
     useGetAppInfo();
+
   return (
     <MainContainer>
       <MainMapContainer

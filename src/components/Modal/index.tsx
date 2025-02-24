@@ -1,8 +1,18 @@
 import React from "react";
 import { Chart } from "../Chart";
 import { ModalContainer } from "./style";
+import { GetGeoJsonItemType } from "../../query/useGetGeoJson";
 
-export const Modal = ({ neighbourhood, usedPopulationData }) => {
+type ModalProps = {
+  neighbourhood: {
+    name: string;
+    setor: string;
+    zona: string;
+  };
+  usedPopulationData: GetGeoJsonItemType[];
+};
+
+export const Modal = ({ neighbourhood, usedPopulationData }: ModalProps) => {
   return (
     <ModalContainer>
       <p>Bairro selecionado: {neighbourhood.name}</p>

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-type GetGeoJsonItemType = {
+export type GetGeoJsonItemType = {
   id_geometria: number;
   ano: string;
   populacao: number;
