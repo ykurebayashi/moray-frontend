@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import { PublicRoutes } from "./Routes/Routes";
+import { Header } from "./components/Header";
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         {PublicRoutes.map((element) => {
           return (
