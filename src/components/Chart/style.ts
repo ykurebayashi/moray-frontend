@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
-  width: 300px;
+  width: 100%;
   height: 200px;
   border: 1px solid black;
   display: flex;
   gap: 10px;
   justify-content: center;
   align-items: flex-end;
+  padding: 10px;
+  padding-bottom: 0px;
 `;
 
 export const SingleColumn = styled.div<{ $heightPercentage }>`

@@ -10,8 +10,8 @@ type NeighbourhoodType = {
 };
 
 export const useGetAppInfo = () => {
-  const { data: geojson } = useGetGeoJson();
   const { data: populationJson } = useGetPopulationGrowth();
+  const { data: geojson } = useGetGeoJson();
   const [neighbourhood, setNeighbourhood] = useState<NeighbourhoodType | null>(
     null
   );
