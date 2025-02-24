@@ -14,13 +14,11 @@ export const Home = () => {
   return (
     <MainContainer>
       <MainMapContainer
-        key={neighbourhood ? "with-info" : "no-info"}
         bounds={[
           [-23.234708, -45.928813],
           [-23.198917, -45.900761],
         ]}
         zoom={15}
-        $hasInfo={!!neighbourhood}
       >
         <TileLayer
           url="https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=BcCw9iWXRyBExU9XfTBr"

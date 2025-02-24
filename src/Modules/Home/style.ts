@@ -9,6 +9,6 @@ export const MainContainer = styled.main`
 
 export const MainMapContainer = styled(MapContainer)<{ $hasInfo: boolean }>`
   height: calc(90vh - ${2 * PADDING_MAP}px);
-  width: ${(props) => (props.$hasInfo ? "70%" : "100%")};
+  width: 100%;
   position: relative;
 `;
