@@ -1,32 +1,16 @@
 import { GeoJSON } from "react-leaflet/GeoJSON";
 import { TileLayer } from "react-leaflet/TileLayer";
-import { useGetGeoJson } from "./query/useGetGeoJson";
-import { useGetPopulationGrowth } from "./query/useGetPopulation";
-import { useEffect, useState } from "react";
 import { Modal } from "./components/Modal";
 import { MainContainer, MainMapContainer } from "./style";
 import "leaflet/dist/leaflet.css";
-import { Header } from "./components/Header";
+import { useGetAppInfo } from "./hooks/useGetAppInfo";
 
 function App() {
-  const { data: geojson } = useGetGeoJson();
-  const { data: populationJson } = useGetPopulationGrowth();
-
-  const [neighbourhood, setNeighbourhood] = useState(null);
-  const [usedPopulationData, setUsedPopulationData] = useState();
-
-  useEffect(() => {
-    if (neighbourhood) {
-      const result = populationJson.filter(
-        (element) => element.id_geometria === neighbourhood.id
-      );
-      setUsedPopulationData(result);
-    }
-  }, [neighbourhood, populationJson]);
+  const { neighbourhood, setNeighbourhood, geojson, usedPopulationData } =
+    useGetAppInfo();
 
   return (
     <MainContainer>
-      <Header />
       <MainMapContainer
         bounds={[
           [-23.234708, -45.928813],

@@ -1,9 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 
+type GetGeoJsonItemType = {
+  id_geometria: number;
+  ano: string;
+  populacao: number;
+};
+
 const getGeoJson = async () => {
   const response = await fetch("http://localhost:5173/bairros-geojson");
   const result = await response.json();
-  return result;
+  return result as GetGeoJsonItemType[];
 };
 
 export const useGetGeoJson = () => {
