@@ -1,10 +1,10 @@
 import { GeoJSON } from "react-leaflet/GeoJSON";
-import { MapContainer } from "react-leaflet/MapContainer";
 import { TileLayer } from "react-leaflet/TileLayer";
 import { useGetGeoJson } from "./query/useGetGeoJson";
 import { useGetPopulationGrowth } from "./query/useGetPopulation";
 import { useEffect, useState } from "react";
 import { Modal } from "./components/Modal";
+import { MainContainer, MainMapContainer } from "./style";
 import "leaflet/dist/leaflet.css";
 
 function App() {
@@ -24,9 +24,8 @@ function App() {
   }, [neighbourhood, populationJson]);
 
   return (
-    <>
-      <MapContainer
-        style={{ height: "100vh", position: "relative" }}
+    <MainContainer>
+      <MainMapContainer
         bounds={[
           [-23.234708, -45.928813],
           [-23.198917, -45.900761],
@@ -45,20 +44,23 @@ function App() {
             eventHandlers={{
               click: (event) => {
                 const eventValue = event.sourceTarget.feature;
-                setNeighbourhood(eventValue.properties);
+                if (neighbourhood === eventValue.properties) {
+                  return setNeighbourhood(null);
+                }
+                return setNeighbourhood(eventValue.properties);
               },
             }}
           />
         )}
+      </MainMapContainer>
 
-        {!!neighbourhood && usedPopulationData && (
-          <Modal
-            neighbourhood={neighbourhood}
-            usedPopulationData={usedPopulationData}
-          />
-        )}
-      </MapContainer>
-    </>
+      {!!neighbourhood && usedPopulationData && (
+        <Modal
+          neighbourhood={neighbourhood}
+          usedPopulationData={usedPopulationData}
+        />
+      )}
+    </MainContainer>
   );
 }
 
