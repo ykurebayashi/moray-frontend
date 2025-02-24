@@ -3,11 +3,12 @@ import { MapContainer } from "react-leaflet/MapContainer";
 
 export const MainContainer = styled.main`
   position: relative;
+  padding: 15px;
 `;
 
-export const MainMapContainer = styled(MapContainer)`
+export const MainMapContainer = styled(MapContainer)<{ $hasInfo: boolean }>`
   height: 90vh;
-  width: 100%;
+  width: ${(props) => (props.$hasInfo ? "70%" : "100%")};
   position: relative;
-  transition: 1s ease-in-out;
+  transition: 5s ease-in-out;
 `;
