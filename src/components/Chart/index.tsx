@@ -14,7 +14,12 @@ export const Chart = ({ data }) => {
   return (
     <MainContainer>
       {data?.map((element) => {
-        return <SingleColumn $heightPercentage={getPercentage(element)} />;
+        return (
+          <SingleColumn
+            key={element.populacao}
+            $heightPercentage={getPercentage(element)}
+          />
+        );
       })}
     </MainContainer>
   );

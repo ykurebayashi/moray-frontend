@@ -1,52 +1,21 @@
-import { GeoJSON } from "react-leaflet/GeoJSON";
-import { TileLayer } from "react-leaflet/TileLayer";
-import { Modal } from "./components/Modal";
-import { MainContainer, MainMapContainer } from "./style";
-import "leaflet/dist/leaflet.css";
-import { useGetAppInfo } from "./hooks/useGetAppInfo";
+import { BrowserRouter, Routes, Route } from "react-router";
+import { PublicRoutes } from "./Routes/Routes";
 
 function App() {
-  const { neighbourhood, setNeighbourhood, geojson, usedPopulationData } =
-    useGetAppInfo();
-
   return (
-    <MainContainer>
-      <MainMapContainer
-        bounds={[
-          [-23.234708, -45.928813],
-          [-23.198917, -45.900761],
-        ]}
-        zoom={15}
-      >
-        <TileLayer
-          url="https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=BcCw9iWXRyBExU9XfTBr"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-
-        {geojson && (
-          <GeoJSON
-            data={geojson}
-            style={{ color: "#6c58ff" }}
-            eventHandlers={{
-              click: (event) => {
-                const eventValue = event.sourceTarget.feature;
-                if (neighbourhood === eventValue.properties) {
-                  return setNeighbourhood(null);
-                }
-                return setNeighbourhood(eventValue.properties);
-              },
-            }}
-          />
-        )}
-      </MainMapContainer>
-
-      {!!neighbourhood && usedPopulationData && (
-        <Modal
-          neighbourhood={neighbourhood}
-          usedPopulationData={usedPopulationData}
-        />
-      )}
-    </MainContainer>
+    <BrowserRouter>
+      <Routes>
+        {PublicRoutes.map((element) => {
+          return (
+            <Route
+              path={element.path}
+              key={element.key}
+              element={<element.component />}
+            />
+          );
+        })}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
