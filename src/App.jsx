@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Modal } from "./components/Modal";
 import { MainContainer, MainMapContainer } from "./style";
 import "leaflet/dist/leaflet.css";
+import { Header } from "./components/Header";
 
 function App() {
   const { data: geojson } = useGetGeoJson();
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <MainContainer>
+      <Header />
       <MainMapContainer
         bounds={[
           [-23.234708, -45.928813],
