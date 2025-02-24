@@ -16,6 +16,7 @@ export const ModalContainer = styled.div`
   position: absolute;
   right: 0;
   top: 0;
+  min-width: 380px;
   width: 30%;
   height: calc(100% - 30px);
   margin-top: ${PADDING_MAP}px;
