@@ -14,6 +14,7 @@ export const Header = ({
           <OptionPill
             onClick={() => selectOption(element)}
             $selected={currentNeighbourhood === element.properties.id}
+            key={element.properties.id}
           >
             {element.properties.name}
           </OptionPill>

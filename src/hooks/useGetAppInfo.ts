@@ -25,7 +25,7 @@ export const useGetAppInfo = () => {
     useState<[number, number, number, number]>(INITIAL_BOUNDS);
 
   const { data: geojson } = useGetGeoJson();
-  const { data: populationJson } = useGetPopulationGrowth();
+  const { data: populationJson } = useGetPopulationGrowth(!!neighbourhood);
 
   const usedPopulationData: GetGeoJsonItemType[] = useMemo(() => {
     if (!neighbourhood || !populationJson) return [];

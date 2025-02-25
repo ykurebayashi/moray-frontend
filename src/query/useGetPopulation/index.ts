@@ -7,9 +7,10 @@ const getPopulationGrowth = async () => {
   return result as GetGeoJsonItemType[];
 };
 
-export const useGetPopulationGrowth = () => {
+export const useGetPopulationGrowth = (enabled: boolean) => {
   return useQuery({
     queryKey: ["GET_POPULATION_DATA"],
     queryFn: () => getPopulationGrowth(),
+    enabled,
   });
 };
