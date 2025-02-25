@@ -9,6 +9,11 @@ export type NeighbourhoodType = {
   zona: string;
 };
 
+export type SingleNeighbourhoodType = {
+  properties: NeighbourhoodType;
+  bbox: [number, number, number, number];
+};
+
 export const INITIAL_BOUNDS: [number, number, number, number] = [
   -45.928813, -23.234708, -45.900761, -23.198917,
 ];
@@ -16,10 +21,8 @@ export const INITIAL_BOUNDS: [number, number, number, number] = [
 export const useGetAppInfo = () => {
   const { data: populationJson } = useGetPopulationGrowth();
   const { data: geojson } = useGetGeoJson();
-  const [neighbourhood, setNeighbourhood] = useState<{
-    properties: NeighbourhoodType;
-    bbox: [number, number, number, number];
-  } | null>(null);
+  const [neighbourhood, setNeighbourhood] =
+    useState<SingleNeighbourhoodType | null>(null);
   const [bounds, setBounds] =
     useState<[number, number, number, number]>(INITIAL_BOUNDS);
 
@@ -30,6 +33,13 @@ export const useGetAppInfo = () => {
       (element) => element.id_geometria === neighbourhood.properties.id
     );
   }, [neighbourhood, populationJson]);
+
+  useEffect(() => {
+    if (neighbourhood === null) {
+      return setBounds(INITIAL_BOUNDS);
+    }
+    return setBounds(neighbourhood.bbox);
+  }, [neighbourhood]);
 
   return {
     neighbourhood,

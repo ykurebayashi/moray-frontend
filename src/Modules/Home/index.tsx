@@ -17,21 +17,8 @@ export const Home = () => {
     bounds,
     setBounds,
   } = useGetAppInfo();
-  console.log(geojson);
-  console.log(neighbourhood);
-  console.log(usedPopulationData);
-  console.log(bounds);
 
-  const key = useMemo(() => {
-    return `info-of-${neighbourhood?.properties.id}`;
-  }, [bounds]);
-
-  useEffect(() => {
-    if (neighbourhood === null) {
-      return setBounds(INITIAL_BOUNDS);
-    }
-    return setBounds(neighbourhood.bbox);
-  }, [neighbourhood]);
+  const key = `info-of-${neighbourhood?.properties.id}-${bounds.join(",")}`;
 
   return (
     <>
