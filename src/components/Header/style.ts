@@ -3,13 +3,12 @@ import styled, { css } from "styled-components";
 export const MainHeader = styled.div`
   height: 10vh;
   display: flex;
-  justify-content: flex-start;
-  padding-left: 5%;
+  justify-content: space-between;
+  padding: 0 5%;
   align-items: center;
   position: absolute;
   z-index: 1000;
   width: 100%;
-  gap: 20px;
 `;
 
 export const OptionPill = styled.button<{ $selected?: boolean }>`
@@ -24,4 +23,10 @@ export const OptionPill = styled.button<{ $selected?: boolean }>`
     css`
       background: #6c58ff33;
     `}
+`;
+
+export const PillsContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  align-items: center;
 `;

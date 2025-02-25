@@ -1,5 +1,5 @@
 import React from "react";
-import { MainHeader, OptionPill } from "./style";
+import { MainHeader, OptionPill, PillsContainer } from "./style";
 import { HeaderProps } from "./types";
 
 export const Header = ({
@@ -9,17 +9,23 @@ export const Header = ({
 }: HeaderProps) => {
   return (
     <MainHeader>
-      {options?.map((element) => {
-        return (
-          <OptionPill
-            onClick={() => selectOption(element)}
-            $selected={currentNeighbourhood === element.properties.id}
-            key={element.properties.id}
-          >
-            {element.properties.name}
-          </OptionPill>
-        );
-      })}
+      <PillsContainer>
+        {options?.map((element) => {
+          return (
+            <OptionPill
+              onClick={() => selectOption(element)}
+              $selected={currentNeighbourhood === element.properties.id}
+              key={element.properties.id}
+            >
+              {element.properties.name}
+            </OptionPill>
+          );
+        })}
+      </PillsContainer>
+      <PillsContainer>
+        <OptionPill onClick={() => alert("trocou dark mode")}>dark</OptionPill>
+        <OptionPill onClick={() => alert("trocou lingua ")}>Lingua</OptionPill>
+      </PillsContainer>
     </MainHeader>
   );
 };
