@@ -52,3 +52,7 @@ export const NeighbourhoodInfo = styled.p`
   font-size 0.875rem;
   font-weight: 400;
 `;
+
+export const ChartContainer = styled.div`
+  height: 400px;
+`;
