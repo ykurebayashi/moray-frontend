@@ -1,5 +1,5 @@
 import React from "react";
-import { MainHeader } from "./style";
+import { MainHeader, OptionPill } from "./style";
 import { HeaderProps } from "./types";
 
 export const Header = ({ options, selectOption }: HeaderProps) => {
@@ -7,9 +7,9 @@ export const Header = ({ options, selectOption }: HeaderProps) => {
     <MainHeader>
       {options?.map((element) => {
         return (
-          <p onClick={() => selectOption(element.properties)}>
+          <OptionPill onClick={() => selectOption(element.properties)}>
             {element.properties.name}
-          </p>
+          </OptionPill>
         );
       })}
     </MainHeader>

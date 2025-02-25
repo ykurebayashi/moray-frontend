@@ -2,12 +2,21 @@ import styled from "styled-components";
 
 export const MainHeader = styled.div`
   height: 10vh;
-  background-color: white;
-  border-bottom: 1px solid black;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 5%;
   align-items: center;
   position: absolute;
   z-index: 1000;
   width: 100%;
+  gap: 20px;
+`;
+
+export const OptionPill = styled.button`
+  background: white;
+  border: none;
+  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 20px;
 `;
