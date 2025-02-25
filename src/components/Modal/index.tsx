@@ -38,7 +38,7 @@ export const Modal = ({
           series={[
             {
               data: yAxisValues,
-              color: "green",
+              color: "#6c58ff",
               label: "População Total",
             },
           ]}

@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { GeoJSON } from "react-leaflet/GeoJSON";
 import { TileLayer } from "react-leaflet/TileLayer";
 import { MainContainer } from "./style";
-import { INITIAL_BOUNDS, useGetAppInfo } from "../../hooks/useGetAppInfo";
+import { useGetAppInfo } from "../../hooks/useGetAppInfo";
 import { Modal } from "../../components/Modal";
 import { Header } from "../../components/Header";
 import { MapContainer } from "react-leaflet/MapContainer";
