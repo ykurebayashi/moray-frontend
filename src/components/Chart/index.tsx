@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { MainContainer, SingleColumn } from "./style";
+import { ChartProps } from "./type";
 import { GetGeoJsonItemType } from "../../query/useGetGeoJson";
 
-type ChartProps = {
-  data: GetGeoJsonItemType[];
-};
 export const Chart = ({ data }: ChartProps) => {
-  const allValues = data?.map((element) => element.populacao);
-  const highestValue = Math.max(...(allValues || []));
+  const allValues = useMemo(() => {
+    return data?.map((element) => element.populacao);
+  }, [data]);
 
-  const getPercentage = (element) => {
+  const highestValue = useMemo(() => {
+    return Math.max(...(allValues || []));
+  }, [allValues]);
+
+  const getPercentage = (element: GetGeoJsonItemType) => {
     const percentage = element.populacao / highestValue;
     return percentage * 100;
   };

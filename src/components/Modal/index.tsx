@@ -6,16 +6,7 @@ import {
   NeighbourhoodInfo,
   NeighbourhoodName,
 } from "./style";
-import { GetGeoJsonItemType } from "../../query/useGetGeoJson";
-
-type ModalProps = {
-  neighbourhood: {
-    name: string;
-    setor: string;
-    zona: string;
-  };
-  usedPopulationData: GetGeoJsonItemType[];
-};
+import { ModalProps } from "./types";
 
 export const Modal = ({ neighbourhood, usedPopulationData }: ModalProps) => {
   return (
