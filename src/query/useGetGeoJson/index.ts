@@ -9,7 +9,7 @@ export type GetGeoJsonItemType = {
 const getGeoJson = async () => {
   const response = await fetch("http://localhost:5173/bairros-geojson");
   const result = await response.json();
-  return result as GetGeoJsonItemType[];
+  return result;
 };
 
 export const useGetGeoJson = () => {
