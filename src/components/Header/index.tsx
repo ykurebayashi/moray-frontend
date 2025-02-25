@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 export const Header = () => {
-  return <MainHeader>oi</MainHeader>;
+  return <MainHeader>MorAyPS</MainHeader>;
 };
 
 export const MainHeader = styled.div`

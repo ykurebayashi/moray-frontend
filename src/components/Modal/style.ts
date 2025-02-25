@@ -56,3 +56,22 @@ export const NeighbourhoodInfo = styled.p`
 export const ChartContainer = styled.div`
   height: 400px;
 `;
+
+export const CloseButton = styled.button`
+  border: none;
+  background: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  padding: 10px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+`;

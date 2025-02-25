@@ -7,4 +7,5 @@ export type ModalProps = {
     zona: string;
   };
   usedPopulationData: GetGeoJsonItemType[];
+  onClose: () => void;
 };

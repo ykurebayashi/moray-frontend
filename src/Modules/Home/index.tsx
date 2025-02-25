@@ -46,6 +46,7 @@ export const Home = () => {
         <Modal
           neighbourhood={neighbourhood}
           usedPopulationData={usedPopulationData}
+          onClose={() => setNeighbourhood(null)}
         />
       )}
     </MainContainer>
