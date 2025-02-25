@@ -7,7 +7,7 @@ export const Header = ({ options, selectOption }: HeaderProps) => {
     <MainHeader>
       {options?.map((element) => {
         return (
-          <OptionPill onClick={() => selectOption(element.properties.id)}>
+          <OptionPill onClick={() => selectOption(element)}>
             {element.properties.name}
           </OptionPill>
         );

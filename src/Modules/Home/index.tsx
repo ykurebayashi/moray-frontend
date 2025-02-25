@@ -35,10 +35,10 @@ export const Home = () => {
 
   return (
     <>
-      {/* <Header
+      <Header
         options={geojson?.features || []}
-        selectOption={setNeighbourhood}
-      /> */}
+        selectOption={(e) => setNeighbourhood(e)}
+      />
       <MainContainer>
         <MapContainer
           bounds={[
