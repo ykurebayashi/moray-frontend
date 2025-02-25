@@ -4,5 +4,5 @@ export type HeaderProps = {
   options: {
     properties: NeighbourhoodType;
   }[];
-  selectOption: (param: NeighbourhoodType) => void;
+  selectOption: (param) => void;
 };

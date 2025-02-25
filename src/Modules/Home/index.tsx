@@ -1,30 +1,53 @@
-//@ts-nocheck
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { GeoJSON } from "react-leaflet/GeoJSON";
 import { TileLayer } from "react-leaflet/TileLayer";
-import { MainContainer, MainMapContainer } from "./style";
-import { useGetAppInfo } from "../../hooks/useGetAppInfo";
+import { MainContainer } from "./style";
+import { INITIAL_BOUNDS, useGetAppInfo } from "../../hooks/useGetAppInfo";
 import { Modal } from "../../components/Modal";
 import { Header } from "../../components/Header";
+import { MapContainer } from "react-leaflet/MapContainer";
 import "leaflet/dist/leaflet.css";
 
 export const Home = () => {
-  const { geojson, neighbourhood, setNeighbourhood, usedPopulationData } =
-    useGetAppInfo();
+  const {
+    geojson,
+    neighbourhood,
+    setNeighbourhood,
+    usedPopulationData,
+    bounds,
+    setBounds,
+  } = useGetAppInfo();
+  console.log(geojson);
+  console.log(neighbourhood);
+  console.log(usedPopulationData);
+  console.log(bounds);
+
+  const key = useMemo(() => {
+    return `info-of-${neighbourhood?.properties.id}`;
+  }, [bounds]);
+
+  useEffect(() => {
+    if (neighbourhood === null) {
+      return setBounds(INITIAL_BOUNDS);
+    }
+    return setBounds(neighbourhood.bbox);
+  }, [neighbourhood]);
 
   return (
     <>
-      <Header
+      {/* <Header
         options={geojson?.features || []}
         selectOption={setNeighbourhood}
-      />
+      /> */}
       <MainContainer>
-        <MainMapContainer
+        <MapContainer
           bounds={[
-            [-23.234708, -45.928813],
-            [-23.198917, -45.900761],
+            [bounds[1], bounds[0]],
+            [bounds[3], bounds[2]],
           ]}
           zoom={15}
+          style={{ height: "100vh", width: "100%", position: "relative" }}
+          key={key}
         >
           <TileLayer
             url="https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=BcCw9iWXRyBExU9XfTBr"
@@ -38,19 +61,19 @@ export const Home = () => {
               eventHandlers={{
                 click: (event) => {
                   const eventValue = event.sourceTarget.feature;
-                  if (neighbourhood === eventValue.properties) {
+                  if (neighbourhood === eventValue) {
                     return setNeighbourhood(null);
                   }
-                  return setNeighbourhood(eventValue.properties);
+                  return setNeighbourhood(eventValue);
                 },
               }}
             />
           )}
-        </MainMapContainer>
+        </MapContainer>
 
         {!!neighbourhood && usedPopulationData && (
           <Modal
-            neighbourhood={neighbourhood}
+            neighbourhood={neighbourhood.properties}
             usedPopulationData={usedPopulationData}
             onClose={() => setNeighbourhood(null)}
           />
