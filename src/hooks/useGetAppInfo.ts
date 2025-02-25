@@ -19,12 +19,13 @@ export const INITIAL_BOUNDS: [number, number, number, number] = [
 ];
 
 export const useGetAppInfo = () => {
-  const { data: populationJson } = useGetPopulationGrowth();
-  const { data: geojson } = useGetGeoJson();
   const [neighbourhood, setNeighbourhood] =
     useState<SingleNeighbourhoodType | null>(null);
   const [bounds, setBounds] =
     useState<[number, number, number, number]>(INITIAL_BOUNDS);
+
+  const { data: geojson } = useGetGeoJson();
+  const { data: populationJson } = useGetPopulationGrowth();
 
   const usedPopulationData: GetGeoJsonItemType[] = useMemo(() => {
     if (!neighbourhood || !populationJson) return [];
@@ -47,6 +48,5 @@ export const useGetAppInfo = () => {
     usedPopulationData,
     geojson,
     bounds,
-    setBounds,
   };
 };

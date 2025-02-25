@@ -6,4 +6,5 @@ import {
 export type HeaderProps = {
   options: SingleNeighbourhoodType[];
   selectOption: (param: SingleNeighbourhoodType) => void;
+  currentNeighbourhood: number | null;
 };

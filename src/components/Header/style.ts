@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const MainHeader = styled.div`
   height: 10vh;
@@ -12,11 +12,16 @@ export const MainHeader = styled.div`
   gap: 20px;
 `;
 
-export const OptionPill = styled.button`
+export const OptionPill = styled.button<{ $selected?: boolean }>`
   background: white;
   border: none;
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.35);
   cursor: pointer;
   padding: 5px;
   border-radius: 20px;
+  ${({ $selected }) =>
+    $selected &&
+    css`
+      background: #6c58ff33;
+    `}
 `;

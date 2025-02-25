@@ -15,7 +15,6 @@ export const Home = () => {
     setNeighbourhood,
     usedPopulationData,
     bounds,
-    setBounds,
   } = useGetAppInfo();
 
   const key = `info-of-${neighbourhood?.properties.id}-${bounds.join(",")}`;
@@ -25,6 +24,7 @@ export const Home = () => {
       <Header
         options={geojson?.features || []}
         selectOption={(e) => setNeighbourhood(e)}
+        currentNeighbourhood={neighbourhood?.properties.id ?? null}
       />
       <MainContainer>
         <MapContainer
