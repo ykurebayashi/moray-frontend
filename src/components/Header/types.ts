@@ -1,5 +1,8 @@
+import { NeighbourhoodType } from "../../hooks/useGetAppInfo";
+
 export type HeaderProps = {
   options: {
-    properties: { name: string; id: number };
+    properties: NeighbourhoodType;
   }[];
+  selectOption: (param: NeighbourhoodType) => void;
 };

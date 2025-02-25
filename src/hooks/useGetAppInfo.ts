@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { GetGeoJsonItemType, useGetGeoJson } from "../query/useGetGeoJson";
 import { useGetPopulationGrowth } from "../query/useGetPopulation";
 
-type NeighbourhoodType = {
+export type NeighbourhoodType = {
   id: number;
   name: string;
   setor: string;

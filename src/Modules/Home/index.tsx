@@ -14,7 +14,10 @@ export const Home = () => {
 
   return (
     <>
-      <Header options={geojson?.features || []} />
+      <Header
+        options={geojson?.features || []}
+        selectOption={setNeighbourhood}
+      />
       <MainContainer>
         <MainMapContainer
           bounds={[
