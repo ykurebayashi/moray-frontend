@@ -1,7 +1,6 @@
 import React from "react";
 import { MainHeader, OptionPill, PillsContainer } from "./style";
 import { HeaderProps } from "./types";
-import { Close } from "feather-icons-react";
 
 export const Header = ({
   options,
@@ -24,9 +23,7 @@ export const Header = ({
         })}
       </PillsContainer>
       <PillsContainer>
-        <OptionPill onClick={() => alert("trocou dark mode")}>
-          <Close />{" "}
-        </OptionPill>
+        <OptionPill onClick={() => alert("trocou dark mode")}>Dark</OptionPill>
         <OptionPill onClick={() => alert("trocou lingua ")}>Lingua</OptionPill>
       </PillsContainer>
     </MainHeader>
