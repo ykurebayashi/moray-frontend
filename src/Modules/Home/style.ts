@@ -4,11 +4,10 @@ export const PADDING_MAP = 15;
 
 export const MainContainer = styled.main`
   position: relative;
-  padding: ${PADDING_MAP}px;
 `;
 
 export const MainMapContainer = styled(MapContainer)<{ $hasInfo: boolean }>`
-  height: calc(90vh - ${2 * PADDING_MAP}px);
+  height: 100vh;
   width: 100%;
   position: relative;
 `;

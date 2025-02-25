@@ -15,10 +15,10 @@ const slideUp = keyframes`
 export const ModalContainer = styled.div`
   position: absolute;
   right: 0;
-  top: 0;
+  top: 10vh;
   min-width: 380px;
   width: 30%;
-  height: calc(100% - 30px);
+  height: calc(100% - 10vh - ${2 * PADDING_MAP}px);
   margin-top: ${PADDING_MAP}px;
   z-index: 1300;
   display: flex;
@@ -72,6 +72,5 @@ export const CloseButton = styled.button`
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 `;
