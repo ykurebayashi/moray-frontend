@@ -5,6 +5,7 @@ export type ModalProps = {
     name: string;
     setor: string;
     zona: string;
+    id: number;
   };
   usedPopulationData: GetGeoJsonItemType[];
   onClose: () => void;

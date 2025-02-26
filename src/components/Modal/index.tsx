@@ -18,11 +18,24 @@ export const Modal = ({
 }: ModalProps) => {
   const { theme } = useContext(ThemeContext);
   const isDarkMode = theme === "dark";
+  const path = location;
+  console.log(path);
   const xAxisElements = usedPopulationData.map((element) => element.ano);
   const yAxisValues = usedPopulationData.map((element) => element.populacao);
 
   return (
     <ModalContainer $isDarkMode={isDarkMode}>
+      <CloseButton
+        style={{ top: "50px" }}
+        $isDarkMode={isDarkMode}
+        onClick={() => {
+          navigator.clipboard.writeText(
+            location.origin + "/" + neighbourhood.id
+          );
+        }}
+      >
+        Compartilhar
+      </CloseButton>
       <CloseButton $isDarkMode={isDarkMode} onClick={onClose}>
         Fechar
       </CloseButton>

@@ -36,7 +36,8 @@ export const Home = () => {
     if (id && geojson) {
       if (!Number(id)) return;
       const newNeighbour = geojson?.features.find(
-        (element) => element.properties.id === Number(id)
+        (element: { properties: { id: number } }) =>
+          element.properties.id === Number(id)
       );
       setNeighbourhood(newNeighbour);
     }
