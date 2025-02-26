@@ -2,14 +2,15 @@ import React, { useContext, useEffect, useMemo, useRef } from "react";
 import { GeoJSON } from "react-leaflet/GeoJSON";
 import { TileLayer } from "react-leaflet/TileLayer";
 import { MainContainer } from "./style";
-import { useGetAppInfo } from "../../hooks/useGetAppInfo";
+
 import { Modal } from "../../components/Modal";
 import { Header } from "../../components/Header";
 import { MapContainer } from "react-leaflet/MapContainer";
 import "leaflet/dist/leaflet.css";
 import { useMapFunctions } from "./hook";
 import { useParams } from "react-router";
-import { GeneralContext } from "../../Context/GeneralContext";
+import { GeneralContext } from "../../../context/GeneralContext";
+import { useGetAppInfo } from "../../../hooks/useGetAppInfo";
 
 export const Home = () => {
   const { id } = useParams();

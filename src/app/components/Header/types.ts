@@ -1,7 +1,7 @@
 import {
   NeighbourhoodType,
   SingleNeighbourhoodType,
-} from "../../hooks/useGetAppInfo";
+} from "../../../hooks/useGetAppInfo";
 
 export type HeaderProps = {
   options: SingleNeighbourhoodType[];

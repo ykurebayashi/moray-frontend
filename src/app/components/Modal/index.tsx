@@ -11,7 +11,7 @@ import {
 } from "./style";
 import { ModalProps } from "./types";
 import { BarChart } from "@mui/x-charts/BarChart";
-import { GeneralContext } from "../../Context/GeneralContext";
+import { GeneralContext } from "../../../context/GeneralContext";
 import { ToastContainer, toast } from "react-toastify";
 
 export const Modal = ({

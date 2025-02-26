@@ -1,4 +1,4 @@
-import { GetGeoJsonItemType } from "../../query/useGetGeoJson";
+import { GetGeoJsonItemType } from "../../../query/useGetGeoJson";
 
 export type ModalProps = {
   neighbourhood: {

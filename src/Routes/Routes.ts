@@ -1,4 +1,4 @@
-import { Home } from "../Modules/Home";
+import { Home } from "../app/Modules/Home";
 
 export const PublicRoutes = [
   {

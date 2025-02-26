@@ -9,9 +9,9 @@ import {
 } from "./style";
 import { HeaderProps } from "./types";
 import { useContext } from "react";
-import { GeneralContext } from "../../Context/GeneralContext";
+import { GeneralContext } from "../../../context/GeneralContext";
 import { useNavigate } from "react-router";
-import { useClickOutside } from "../../hooks/useDetectClickOutside";
+import { useClickOutside } from "../../../hooks/useDetectClickOutside";
 import { FlexRow } from "../Modal/style";
 
 export const Header = ({
