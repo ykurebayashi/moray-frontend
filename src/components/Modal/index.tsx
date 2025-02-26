@@ -90,13 +90,6 @@ export const Modal = ({
           }}
         />
       </ChartContainer>
-
-      <ActionButton
-        $isDarkMode={isDarkMode}
-        onClick={() => notify("Adicionado aos favoritos")}
-      >
-        Favoritar Bairro
-      </ActionButton>
       <ToastContainer />
     </ModalContainer>
   );
