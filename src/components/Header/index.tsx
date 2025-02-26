@@ -13,10 +13,9 @@ export const Header = ({
   const isDarkMode = theme === "dark";
   const handleChangeTheme = () => {
     if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
+      return setTheme("dark");
     }
+    return setTheme("light");
   };
 
   return (

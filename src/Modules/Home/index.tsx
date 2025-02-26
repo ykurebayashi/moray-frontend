@@ -22,14 +22,14 @@ export const Home = () => {
     setNeighbourhood,
     usedPopulationData,
     bounds,
+    key,
   } = useGetAppInfo();
+
   const { onEachFeatureFunctions } = useMapFunctions({
     geoJsonRef,
     neighbourhood,
     setNeighbourhood,
   });
-
-  const key = `info-of-${neighbourhood?.properties.id}-${bounds.join(",")}`;
 
   useEffect(() => {
     if (id && geojson) {

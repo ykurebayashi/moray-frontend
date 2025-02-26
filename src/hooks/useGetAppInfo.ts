@@ -42,11 +42,14 @@ export const useGetAppInfo = () => {
     return setBounds(neighbourhood.bbox);
   }, [neighbourhood]);
 
+  const key = `info-of-${neighbourhood?.properties.id}-${bounds.join(",")}`;
+
   return {
     neighbourhood,
     setNeighbourhood,
     usedPopulationData,
     geojson,
     bounds,
+    key,
   };
 };

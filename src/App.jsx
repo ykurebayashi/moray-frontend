@@ -5,7 +5,7 @@ import { ThemeContext } from "./style/ThemeContext";
 import { useLocalStorage } from "./storage/useLocalStorage";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const { setValue, getValue } = useLocalStorage();
 
   const handleChangeTheme = (param) => {
