@@ -7,6 +7,7 @@ import { Modal } from "../../components/Modal";
 import { Header } from "../../components/Header";
 import { MapContainer } from "react-leaflet/MapContainer";
 import "leaflet/dist/leaflet.css";
+import { useLocalStorage } from "../../storage/useLocalStorage";
 
 export const Home = () => {
   const {
@@ -16,7 +17,7 @@ export const Home = () => {
     usedPopulationData,
     bounds,
   } = useGetAppInfo();
-
+  const { getValue } = useLocalStorage();
   const key = `info-of-${neighbourhood?.properties.id}-${bounds.join(",")}`;
 
   return (
@@ -26,7 +27,7 @@ export const Home = () => {
         selectOption={(e) => setNeighbourhood(e)}
         currentNeighbourhood={neighbourhood?.properties.id ?? null}
       />
-      <MainContainer>
+      <MainContainer $isDarkMode={getValue("theme") === "dark"}>
         <MapContainer
           bounds={[
             [bounds[1], bounds[0]],
