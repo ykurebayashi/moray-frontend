@@ -13,6 +13,7 @@ import {
   OptionPill,
   PillsContainer,
 } from "./style";
+import { X } from "react-feather";
 import { useMobile } from "../../../hooks/useMobile";
 
 export const Header = ({
@@ -93,7 +94,7 @@ export const Header = ({
                     $isDarkMode={isDarkMode}
                     onClick={() => handleDeleteFavorite(element.id)}
                   >
-                    X
+                    <X />
                   </CloseButton>
                 </FlexRow>
               );
