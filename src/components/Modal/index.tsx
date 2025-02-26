@@ -94,8 +94,10 @@ export const Modal = ({
         $isDarkMode={isDarkMode}
         onClick={() => {
           if (favs.some((element) => element.id === neighbourhood.id)) {
+            notify("Este bairro já está nos favoritos");
             return;
           }
+          notify("Adicionado aos favoritos");
 
           return setFavs([...favs, neighbourhood]);
         }}
