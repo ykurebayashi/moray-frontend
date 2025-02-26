@@ -69,4 +69,5 @@ export const DropdownMenu = styled.div<{ $isDarkMode: boolean }>`
 
 export const FavoriteOption = styled.p<{ $isDarkMode: boolean }>`
   color: ${({ $isDarkMode }) => ($isDarkMode ? "white" : "black")};
+  cursor: pointer;
 `;

@@ -57,11 +57,13 @@ export const Home = () => {
           ]}
           style={{ height: "100vh", width: "100%", position: "relative" }}
           key={key}
+          zoomControl={false}
         >
           <TileLayer url="https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=BcCw9iWXRyBExU9XfTBr" />
 
           {geojson && (
             <GeoJSON
+              //@ts-ignore
               ref={geoJsonRef}
               data={geojson}
               //@ts-ignore

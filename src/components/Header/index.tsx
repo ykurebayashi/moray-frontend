@@ -9,12 +9,14 @@ import {
 import { HeaderProps } from "./types";
 import { useContext } from "react";
 import { GeneralContext } from "../../Context/GeneralContext";
+import { useNavigate } from "react-router";
 
 export const Header = ({
   options,
   selectOption,
   currentNeighbourhood,
 }: HeaderProps) => {
+  const navigate = useNavigate();
   const [showFavs, setShowFavs] = useState<boolean>(false);
 
   const { setTheme, theme, favs } = useContext(GeneralContext);
@@ -58,7 +60,13 @@ export const Header = ({
           <DropdownMenu $isDarkMode={isDarkMode}>
             {favs.map((element) => {
               return (
-                <FavoriteOption $isDarkMode={isDarkMode}>
+                <FavoriteOption
+                  $isDarkMode={isDarkMode}
+                  onClick={() => {
+                    navigate(`/${element.id}`);
+                    setShowFavs(false);
+                  }}
+                >
                   {element.name}
                 </FavoriteOption>
               );
