@@ -19,7 +19,7 @@ function App() {
     } else {
       setTheme("dark");
     }
-  }, []);
+  }, [getValue]);
 
   return (
     <BrowserRouter>

@@ -17,6 +17,7 @@ export const Header = ({
       setTheme("light");
     }
   };
+
   return (
     <MainHeader>
       <PillsContainer>
