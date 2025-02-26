@@ -1,13 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import { PublicRoutes } from "./Routes/Routes";
-import { ThemeProvider } from "styled-components";
-import { useTheme } from "./style";
+import { useState } from "react";
+import { ThemeContext } from "./style/ThemeContext";
+import { useLocalStorage } from "./storage/useLocalStorage";
 
 function App() {
-  const { currentTheme } = useTheme();
+  const [theme, setTheme] = useState("light");
+  const { setValue } = useLocalStorage();
+
+  const handleChangeTheme = (param) => {
+    setTheme(param);
+    setValue("theme", param);
+  };
+
   return (
     <BrowserRouter>
-      <ThemeProvider theme={currentTheme}>
+      <ThemeContext.Provider
+        value={{ theme: theme, setTheme: handleChangeTheme }}
+      >
         <Routes>
           {PublicRoutes.map((element) => {
             return (
@@ -19,7 +29,7 @@ function App() {
             );
           })}
         </Routes>
-      </ThemeProvider>
+      </ThemeContext.Provider>
     </BrowserRouter>
   );
 }

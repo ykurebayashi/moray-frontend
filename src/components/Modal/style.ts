@@ -25,12 +25,12 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background: ${({ theme }) => theme.modal.background};
+  background: white;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid ${({ theme }) => theme.modal.background};
+  border: 1px solid white;
   padding: ${PADDING_MAP}px;
   animation: ${slideUp} 1s ease-out;
 `;
@@ -42,13 +42,13 @@ export const MainContent = styled.div`
 `;
 
 export const NeighbourhoodName = styled.h2`
-  color: ${({ theme }) => theme.modal.title};
+  color: grey;
   font-size: 1.375rem;
   font-weight: 400;
 `;
 
 export const NeighbourhoodInfo = styled.p`
-  color: ${({ theme }) => theme.modal.info};
+  color: grey;
   font-size 0.875rem;
   font-weight: 400;
 `;
@@ -65,7 +65,7 @@ export const CloseButton = styled.button`
   top: 10px;
   cursor: pointer;
   padding: 10px;
-  color: ${({ theme }) => theme.modal.title};
+  color: grey;
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);

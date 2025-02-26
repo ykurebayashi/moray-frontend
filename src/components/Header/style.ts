@@ -12,11 +12,11 @@ export const MainHeader = styled.div`
 `;
 
 export const OptionPill = styled.button<{ $selected?: boolean }>`
-  background: ${({ theme }) => theme.options.background};
+  background: white;
   border: none;
   min-width: 100px;
   height: 30px;
-  box-shadow: 0px 0px 8px 1px ${({ theme }) => theme.options.shadow};
+  box-shadow: 0px 0px 8px 1px white;
   cursor: pointer;
   padding: 0 10px;
   border-radius: 20px;
@@ -25,7 +25,7 @@ export const OptionPill = styled.button<{ $selected?: boolean }>`
   white-space: nowrap;
   overflow: hidden;
   text-align: center;
-  color: ${({ theme }) => theme.options.text};
+  color: black;
 
   ${({ $selected }) =>
     $selected &&

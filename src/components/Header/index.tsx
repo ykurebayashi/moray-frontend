@@ -1,18 +1,21 @@
 import React from "react";
 import { MainHeader, OptionPill, PillsContainer } from "./style";
 import { HeaderProps } from "./types";
-import { useTheme } from "../../style";
+import { useContext } from "react";
+import { ThemeContext } from "../../style/ThemeContext";
 
 export const Header = ({
   options,
   selectOption,
   currentNeighbourhood,
 }: HeaderProps) => {
-  const { toggleTheme, isDarkMode } = useTheme();
-
+  const { setTheme, theme } = useContext(ThemeContext);
   const handleChangeTheme = () => {
-    toggleTheme();
-    window.location.reload();
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   };
   return (
     <MainHeader>
@@ -31,7 +34,7 @@ export const Header = ({
       </PillsContainer>
       <PillsContainer>
         <OptionPill onClick={handleChangeTheme}>
-          {isDarkMode ? "Light" : "Dark"}
+          {/* {isDarkMode ? "Light" : "Dark"} */}
         </OptionPill>
       </PillsContainer>
     </MainHeader>
