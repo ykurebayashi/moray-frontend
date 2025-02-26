@@ -47,7 +47,12 @@ export const Header = ({
         {options?.map((element) => {
           return (
             <OptionPill
-              onClick={() => selectOption(element)}
+              onClick={() => {
+                if (currentNeighbourhood === element.properties.id) {
+                  return selectOption(null);
+                }
+                return selectOption(element);
+              }}
               $selected={currentNeighbourhood === element.properties.id}
               $isDarkMode={isDarkMode}
               key={element.properties.id}
