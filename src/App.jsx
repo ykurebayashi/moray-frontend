@@ -14,11 +14,22 @@ function App() {
     setValue("theme", param);
   };
 
+  const handleChangeFavs = (param) => {
+    setFavs(param);
+    setValue("favs", param);
+  };
+
   useEffect(() => {
     if (getValue("theme") === "light") {
       setTheme("ligth");
     } else {
       setTheme("dark");
+    }
+
+    const favs = getValue("favs");
+
+    if (favs) {
+      setFavs(favs);
     }
   }, [getValue]);
 
@@ -29,7 +40,7 @@ function App() {
           theme: theme,
           setTheme: handleChangeTheme,
           favs: favs,
-          setFavs: setFavs,
+          setFavs: handleChangeFavs,
         }}
       >
         <Routes>
