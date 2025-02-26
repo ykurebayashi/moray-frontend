@@ -18,7 +18,35 @@ export const Home = () => {
     bounds,
   } = useGetAppInfo();
   const { theme } = useContext(ThemeContext);
+  const geoJsonRef = useRef();
+
   const key = `info-of-${neighbourhood?.properties.id}-${bounds.join(",")}`;
+
+  const handleClick = (event) => {
+    const eventValue = event.sourceTarget.feature;
+
+    if (neighbourhood === eventValue) {
+      return setNeighbourhood(null);
+    }
+    return setNeighbourhood(eventValue);
+  };
+
+  const handleMouseOver = (event) => {
+    if (!geoJsonRef.current) return;
+    geoJsonRef.current.resetStyle();
+
+    const eventValue = event.target;
+    eventValue.setStyle({ color: "green" });
+  };
+
+  const onEachFeatureFunctions = (_, layer) => {
+    layer.on({
+      mouseover: (event) => {
+        handleMouseOver(event);
+      },
+      click: handleClick,
+    });
+  };
 
   return (
     <>
@@ -44,17 +72,10 @@ export const Home = () => {
 
           {geojson && (
             <GeoJSON
+              ref={geoJsonRef}
               data={geojson}
               style={{ color: "#6c58ff" }}
-              eventHandlers={{
-                click: (event) => {
-                  const eventValue = event.sourceTarget.feature;
-                  if (neighbourhood === eventValue) {
-                    return setNeighbourhood(null);
-                  }
-                  return setNeighbourhood(eventValue);
-                },
-              }}
+              onEachFeature={onEachFeatureFunctions}
             />
           )}
         </MapContainer>
