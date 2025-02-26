@@ -1,12 +1,14 @@
 import React from "react";
 import { MainHeader, OptionPill, PillsContainer } from "./style";
 import { HeaderProps } from "./types";
+import { useTheme } from "../../style";
 
 export const Header = ({
   options,
   selectOption,
   currentNeighbourhood,
 }: HeaderProps) => {
+  const { toggleTheme } = useTheme();
   return (
     <MainHeader>
       <PillsContainer>
@@ -23,7 +25,8 @@ export const Header = ({
         })}
       </PillsContainer>
       <PillsContainer>
-        <OptionPill onClick={() => alert("trocou dark mode")}>Dark</OptionPill>
+        <button onClick={toggleTheme}>Trocar Tema</button>
+        <OptionPill onClick={toggleTheme}>Dark</OptionPill>
         <OptionPill onClick={() => alert("trocou lingua ")}>Lingua</OptionPill>
       </PillsContainer>
     </MainHeader>
