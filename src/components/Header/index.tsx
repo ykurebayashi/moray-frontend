@@ -9,6 +9,11 @@ export const Header = ({
   currentNeighbourhood,
 }: HeaderProps) => {
   const { toggleTheme } = useTheme();
+
+  const handleChangeTheme = () => {
+    toggleTheme();
+    window.location.reload();
+  };
   return (
     <MainHeader>
       <PillsContainer>
@@ -25,8 +30,7 @@ export const Header = ({
         })}
       </PillsContainer>
       <PillsContainer>
-        <button onClick={toggleTheme}>Trocar Tema</button>
-        <OptionPill onClick={toggleTheme}>Dark</OptionPill>
+        <OptionPill onClick={handleChangeTheme}>Dark</OptionPill>
         <OptionPill onClick={() => alert("trocou lingua ")}>Lingua</OptionPill>
       </PillsContainer>
     </MainHeader>
