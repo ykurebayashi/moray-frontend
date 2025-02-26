@@ -19,7 +19,7 @@ export const Modal = ({
   const { theme } = useContext(ThemeContext);
   const isDarkMode = theme === "dark";
   const path = location;
-  console.log(path);
+
   const xAxisElements = usedPopulationData.map((element) => element.ano);
   const yAxisValues = usedPopulationData.map((element) => element.populacao);
 
