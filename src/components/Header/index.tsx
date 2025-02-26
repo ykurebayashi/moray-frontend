@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   MainHeader,
   OptionPill,
@@ -10,6 +10,7 @@ import { HeaderProps } from "./types";
 import { useContext } from "react";
 import { GeneralContext } from "../../Context/GeneralContext";
 import { useNavigate } from "react-router";
+import { useClickOutside } from "../../hooks/useDetectClickOutside";
 
 export const Header = ({
   options,
@@ -18,6 +19,8 @@ export const Header = ({
 }: HeaderProps) => {
   const navigate = useNavigate();
   const [showFavs, setShowFavs] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useClickOutside(ref, () => setShowFavs(false));
 
   const { setTheme, theme, favs } = useContext(GeneralContext);
 
@@ -57,7 +60,7 @@ export const Header = ({
           {isDarkMode ? "Light" : "Dark"}
         </OptionPill>
         {showFavs && (
-          <DropdownMenu $isDarkMode={isDarkMode}>
+          <DropdownMenu $isDarkMode={isDarkMode} ref={ref}>
             {favs.map((element) => {
               return (
                 <FavoriteOption
