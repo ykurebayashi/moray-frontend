@@ -49,6 +49,7 @@ export const Home = () => {
         options={geojson?.features || []}
         selectOption={(e) => setNeighbourhood(e)}
         currentNeighbourhood={neighbourhood?.properties.id ?? null}
+        setNeighbourhood={setNeighbourhood}
       />
       <MainContainer $isDarkMode={theme === "dark"}>
         <MapContainer

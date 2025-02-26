@@ -54,7 +54,7 @@ export const Modal = ({
             style={{ top: "50px" }}
             $isDarkMode={isDarkMode}
             onClick={() => {
-              notify("Copiado para o clipboard");
+              notify("Link do bairro copiado para o clipboard");
               navigator.clipboard.writeText(
                 location.origin + "/" + neighbourhood.id
               );

@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 
 import { HeaderProps } from "./types";
 import { useContext } from "react";
-import { useNavigate } from "react-router";
 import { useClickOutside } from "../../../hooks/useDetectClickOutside";
 import { FlexRow } from "../Modal/style";
 import { GeneralContext } from "../../../context/GeneralContext";
@@ -19,8 +18,8 @@ export const Header = ({
   options,
   selectOption,
   currentNeighbourhood,
+  setNeighbourhood,
 }: HeaderProps) => {
-  const navigate = useNavigate();
   const [showFavs, setShowFavs] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
   useClickOutside(ref, () => setShowFavs(false));
@@ -74,7 +73,10 @@ export const Header = ({
                   <FavoriteOption
                     $isDarkMode={isDarkMode}
                     onClick={() => {
-                      navigate(`/${element.id}`);
+                      const selectedOption = options.find(
+                        (option) => option.properties.id === element.id
+                      );
+                      setNeighbourhood(selectedOption);
                       setShowFavs(false);
                     }}
                   >

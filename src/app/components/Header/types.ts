@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import {
   NeighbourhoodType,
   SingleNeighbourhoodType,
@@ -7,4 +8,5 @@ export type HeaderProps = {
   options: SingleNeighbourhoodType[];
   selectOption: (param: SingleNeighbourhoodType) => void;
   currentNeighbourhood: number | null;
+  setNeighbourhood: Dispatch<SetStateAction<SingleNeighbourhoodType>>;
 };
