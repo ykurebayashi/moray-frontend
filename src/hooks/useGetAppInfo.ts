@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { GetGeoJsonItemType, useGetGeoJson } from "../query/useGetGeoJson";
 import { useGetPopulationGrowth } from "../query/useGetPopulation";
 
+type BoundsType = [number, number, number, number];
+
 export type NeighbourhoodType = {
   id: number;
   name: string;
@@ -11,18 +13,17 @@ export type NeighbourhoodType = {
 
 export type SingleNeighbourhoodType = {
   properties: NeighbourhoodType;
-  bbox: [number, number, number, number];
+  bbox: BoundsType;
 };
 
-export const INITIAL_BOUNDS: [number, number, number, number] = [
+export const INITIAL_BOUNDS: BoundsType = [
   -45.928813, -23.234708, -45.900761, -23.198917,
 ];
 
 export const useGetAppInfo = () => {
   const [neighbourhood, setNeighbourhood] =
     useState<SingleNeighbourhoodType | null>(null);
-  const [bounds, setBounds] =
-    useState<[number, number, number, number]>(INITIAL_BOUNDS);
+  const [bounds, setBounds] = useState<BoundsType>(INITIAL_BOUNDS);
 
   const { data: geojson } = useGetGeoJson();
   const { data: populationJson } = useGetPopulationGrowth(!!neighbourhood);
