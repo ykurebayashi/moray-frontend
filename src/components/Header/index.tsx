@@ -8,7 +8,7 @@ export const Header = ({
   selectOption,
   currentNeighbourhood,
 }: HeaderProps) => {
-  const { toggleTheme } = useTheme();
+  const { toggleTheme, isDarkMode } = useTheme();
 
   const handleChangeTheme = () => {
     toggleTheme();
@@ -30,8 +30,9 @@ export const Header = ({
         })}
       </PillsContainer>
       <PillsContainer>
-        <OptionPill onClick={handleChangeTheme}>Dark</OptionPill>
-        <OptionPill onClick={() => alert("trocou lingua ")}>Lingua</OptionPill>
+        <OptionPill onClick={handleChangeTheme}>
+          {isDarkMode ? "Light" : "Dark"}
+        </OptionPill>
       </PillsContainer>
     </MainHeader>
   );
