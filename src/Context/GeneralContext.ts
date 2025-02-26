@@ -8,7 +8,7 @@ type ContextType = {
   setFavs: React.Dispatch<React.SetStateAction<{ id: number; name: string }[]>>;
 };
 
-export const ThemeContext = createContext<ContextType>({
+export const GeneralContext = createContext<ContextType>({
   theme: "dark",
   setTheme: () => {},
   favs: [],

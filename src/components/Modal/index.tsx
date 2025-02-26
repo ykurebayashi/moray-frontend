@@ -11,7 +11,7 @@ import {
 } from "./style";
 import { ModalProps } from "./types";
 import { BarChart } from "@mui/x-charts/BarChart";
-import { ThemeContext } from "../../style/ThemeContext";
+import { GeneralContext } from "../../Context/GeneralContext";
 import { ToastContainer, toast } from "react-toastify";
 
 export const Modal = ({
@@ -19,7 +19,7 @@ export const Modal = ({
   usedPopulationData,
   onClose,
 }: ModalProps) => {
-  const { theme, setFavs, favs } = useContext(ThemeContext);
+  const { theme, setFavs, favs } = useContext(GeneralContext);
   const isDarkMode = theme === "dark";
   const notify = (param) =>
     toast(param, {

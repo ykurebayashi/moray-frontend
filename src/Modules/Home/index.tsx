@@ -7,13 +7,13 @@ import { Modal } from "../../components/Modal";
 import { Header } from "../../components/Header";
 import { MapContainer } from "react-leaflet/MapContainer";
 import "leaflet/dist/leaflet.css";
-import { ThemeContext } from "../../style/ThemeContext";
 import { useMapFunctions } from "./hook";
 import { useParams } from "react-router";
+import { GeneralContext } from "../../Context/GeneralContext";
 
 export const Home = () => {
   const { id } = useParams();
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(GeneralContext);
   const geoJsonRef = useRef();
 
   const {

@@ -8,7 +8,7 @@ import {
 } from "./style";
 import { HeaderProps } from "./types";
 import { useContext } from "react";
-import { ThemeContext } from "../../style/ThemeContext";
+import { GeneralContext } from "../../Context/GeneralContext";
 
 export const Header = ({
   options,
@@ -17,7 +17,7 @@ export const Header = ({
 }: HeaderProps) => {
   const [showFavs, setShowFavs] = useState<boolean>(false);
 
-  const { setTheme, theme, favs } = useContext(ThemeContext);
+  const { setTheme, theme, favs } = useContext(GeneralContext);
 
   const isDarkMode = theme === "dark";
 

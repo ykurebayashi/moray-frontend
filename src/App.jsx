@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import { PublicRoutes } from "./Routes/Routes";
 import { useEffect, useState } from "react";
-import { ThemeContext } from "./style/ThemeContext";
 import { useLocalStorage } from "./storage/useLocalStorage";
+import { GeneralContext } from "./Context/GeneralContext";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ThemeContext.Provider
+      <GeneralContext.Provider
         value={{
           theme: theme,
           setTheme: handleChangeTheme,
@@ -54,7 +54,7 @@ function App() {
             );
           })}
         </Routes>
-      </ThemeContext.Provider>
+      </GeneralContext.Provider>
     </BrowserRouter>
   );
 }
