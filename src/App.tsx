@@ -2,10 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import { PublicRoutes } from "./Routes/Routes";
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "./storage/useLocalStorage";
-import { GeneralContext } from "./Context/GeneralContext";
+import { GeneralContext } from "./context/GeneralContext";
+import React from "react";
 
 function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [favs, setFavs] = useState([]);
   const { setValue, getValue } = useLocalStorage();
 
@@ -21,7 +22,7 @@ function App() {
 
   useEffect(() => {
     if (getValue("theme") === "light") {
-      setTheme("ligth");
+      setTheme("light");
     } else {
       setTheme("dark");
     }

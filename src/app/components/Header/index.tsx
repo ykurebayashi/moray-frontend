@@ -1,18 +1,19 @@
 import React, { useRef, useState } from "react";
-import {
-  MainHeader,
-  OptionPill,
-  PillsContainer,
-  DropdownMenu,
-  FavoriteOption,
-  CloseButton,
-} from "./style";
+
 import { HeaderProps } from "./types";
 import { useContext } from "react";
-import { GeneralContext } from "../../../context/GeneralContext";
 import { useNavigate } from "react-router";
 import { useClickOutside } from "../../../hooks/useDetectClickOutside";
 import { FlexRow } from "../Modal/style";
+import { GeneralContext } from "../../../context/GeneralContext";
+import {
+  MainHeader,
+  CloseButton,
+  DropdownMenu,
+  FavoriteOption,
+  OptionPill,
+  PillsContainer,
+} from "./style";
 
 export const Header = ({
   options,

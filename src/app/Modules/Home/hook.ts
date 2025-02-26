@@ -1,4 +1,4 @@
-import { SingleNeighbourhoodType } from "../../hooks/useGetAppInfo";
+import { SingleNeighbourhoodType } from "../../../hooks/useGetAppInfo";
 
 type UseMapFunctionsProps = {
   neighbourhood: SingleNeighbourhoodType | null;

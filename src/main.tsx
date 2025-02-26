@@ -1,8 +1,8 @@
 import "./main.scss";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import App from "./App";
 
 export const initAPIMock = async () => {
   const { worker } = await import("./backend/worker.js");
