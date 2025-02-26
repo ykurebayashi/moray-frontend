@@ -17,7 +17,7 @@ export const Header = ({
 }: HeaderProps) => {
   const [showFavs, setShowFavs] = useState<boolean>(false);
 
-  const { setTheme, theme } = useContext(ThemeContext);
+  const { setTheme, theme, favs } = useContext(ThemeContext);
 
   const isDarkMode = theme === "dark";
 
@@ -56,9 +56,13 @@ export const Header = ({
         </OptionPill>
         {showFavs && (
           <DropdownMenu $isDarkMode={isDarkMode}>
-            <FavoriteOption $isDarkMode={isDarkMode}>oi</FavoriteOption>
-            <FavoriteOption $isDarkMode={isDarkMode}>oi</FavoriteOption>
-            <FavoriteOption $isDarkMode={isDarkMode}>oi</FavoriteOption>
+            {favs.map((element) => {
+              return (
+                <FavoriteOption $isDarkMode={isDarkMode}>
+                  {element.name}
+                </FavoriteOption>
+              );
+            })}
           </DropdownMenu>
         )}
       </PillsContainer>

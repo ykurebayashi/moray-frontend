@@ -19,7 +19,7 @@ export const Modal = ({
   usedPopulationData,
   onClose,
 }: ModalProps) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme, setFavs, favs } = useContext(ThemeContext);
   const isDarkMode = theme === "dark";
   const notify = (param) =>
     toast(param, {
@@ -90,6 +90,18 @@ export const Modal = ({
           }}
         />
       </ChartContainer>
+      <ActionButton
+        $isDarkMode={isDarkMode}
+        onClick={() => {
+          if (favs.some((element) => element.id === neighbourhood.id)) {
+            return;
+          }
+
+          return setFavs([...favs, neighbourhood]);
+        }}
+      >
+        Adicionar aos favoritos
+      </ActionButton>
       <ToastContainer />
     </ModalContainer>
   );
