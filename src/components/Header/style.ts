@@ -7,7 +7,7 @@ export const MainHeader = styled.div`
   padding: 0 5%;
   align-items: center;
   position: absolute;
-  z-index: 1000;
+  z-index: 1302;
   width: 100%;
 `;
 
@@ -62,6 +62,9 @@ export const DropdownMenu = styled.div<{ $isDarkMode: boolean }>`
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid white;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 export const FavoriteOption = styled.p<{ $isDarkMode: boolean }>`
