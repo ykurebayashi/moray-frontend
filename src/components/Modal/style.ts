@@ -65,6 +65,7 @@ export const CloseButton = styled.button`
   top: 10px;
   cursor: pointer;
   padding: 10px;
+  color: ${({ theme }) => theme.modal.title};
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);
