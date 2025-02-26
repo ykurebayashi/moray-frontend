@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const MainHeader = styled.div`
+export const MainHeader = styled.div<{ $isMobile: boolean }>`
   height: 10vh;
   display: flex;
   justify-content: space-between;
@@ -9,6 +9,13 @@ export const MainHeader = styled.div`
   position: absolute;
   z-index: 1302;
   width: 100%;
+
+  ${({ $isMobile }) =>
+    $isMobile &&
+    css`
+      flex-direction: column;
+      padding: 10px;
+    `}
 `;
 
 export const OptionPill = styled.button<{
@@ -38,13 +45,20 @@ export const OptionPill = styled.button<{
     `}
 `;
 
-export const PillsContainer = styled.div`
+export const PillsContainer = styled.div<{ $isMobile: boolean }>`
   display: flex;
   gap: 20px;
   max-width: 50%;
   overflow-x: scroll;
   align-items: center;
   padding: 20px;
+
+  ${({ $isMobile }) =>
+    $isMobile &&
+    css`
+      max-width: 100%;
+      min-width: 100%;
+    `}
 `;
 
 export const DropdownMenu = styled.div<{ $isDarkMode: boolean }>`

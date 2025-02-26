@@ -13,6 +13,7 @@ import { ModalProps } from "./types";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { GeneralContext } from "../../../context/GeneralContext";
 import { ToastContainer, toast } from "react-toastify";
+import { useMobile } from "../../../hooks/useMobile";
 
 export const Modal = ({
   neighbourhood,
@@ -21,6 +22,8 @@ export const Modal = ({
 }: ModalProps) => {
   const { theme, setFavs, favs } = useContext(GeneralContext);
   const isDarkMode = theme === "dark";
+  const { isMobile } = useMobile();
+
   const notify = (param) =>
     toast(param, {
       position: "top-right",
@@ -36,7 +39,7 @@ export const Modal = ({
   const yAxisValues = usedPopulationData.map((element) => element.populacao);
 
   return (
-    <ModalContainer $isDarkMode={isDarkMode}>
+    <ModalContainer $isDarkMode={isDarkMode} $isMobile={isMobile}>
       <TopInfos>
         <MainContent>
           <NeighbourhoodName $isDarkMode={isDarkMode}>

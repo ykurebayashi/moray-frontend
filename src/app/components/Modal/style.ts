@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { PADDING_MAP } from "../../Modules/Home/style";
 
 const slideUp = keyframes`
@@ -12,7 +12,10 @@ const slideUp = keyframes`
   }
 `;
 
-export const ModalContainer = styled.div<{ $isDarkMode: boolean }>`
+export const ModalContainer = styled.div<{
+  $isDarkMode: boolean;
+  $isMobile: boolean;
+}>`
   position: absolute;
   right: 0;
   top: 10vh;
@@ -34,6 +37,15 @@ export const ModalContainer = styled.div<{ $isDarkMode: boolean }>`
   border: 1px solid white;
   padding: ${PADDING_MAP}px;
   animation: ${slideUp} 1s ease-out;
+
+  ${({ $isMobile }) =>
+    $isMobile &&
+    css`
+      width: 100%;
+      top: unset;
+      bottom: 0;
+      height: calc(100% - 35vh - ${2 * PADDING_MAP}px);
+    `}
 `;
 
 export const MainContent = styled.div`

@@ -13,6 +13,7 @@ import {
   OptionPill,
   PillsContainer,
 } from "./style";
+import { useMobile } from "../../../hooks/useMobile";
 
 export const Header = ({
   options,
@@ -22,6 +23,7 @@ export const Header = ({
 }: HeaderProps) => {
   const [showFavs, setShowFavs] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
+  const { isMobile } = useMobile();
   useClickOutside(ref, () => setShowFavs(false));
 
   const { setTheme, theme, favs, setFavs } = useContext(GeneralContext);
@@ -40,8 +42,8 @@ export const Header = ({
     setFavs(newValues);
   };
   return (
-    <MainHeader>
-      <PillsContainer>
+    <MainHeader $isMobile={isMobile}>
+      <PillsContainer $isMobile={isMobile}>
         {options?.map((element) => {
           return (
             <OptionPill
@@ -55,7 +57,7 @@ export const Header = ({
           );
         })}
       </PillsContainer>
-      <PillsContainer>
+      <PillsContainer $isMobile={isMobile}>
         <OptionPill
           $isDarkMode={isDarkMode}
           onClick={() => setShowFavs((prev) => !prev)}
