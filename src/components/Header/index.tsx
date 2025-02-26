@@ -10,6 +10,7 @@ export const Header = ({
   currentNeighbourhood,
 }: HeaderProps) => {
   const { setTheme, theme } = useContext(ThemeContext);
+  const isDarkMode = theme === "dark";
   const handleChangeTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -35,7 +36,7 @@ export const Header = ({
       </PillsContainer>
       <PillsContainer>
         <OptionPill onClick={handleChangeTheme}>
-          {/* {isDarkMode ? "Light" : "Dark"} */}
+          {isDarkMode ? "Light" : "Dark"}
         </OptionPill>
       </PillsContainer>
     </MainHeader>
