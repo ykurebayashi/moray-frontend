@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { HeaderProps } from "./types";
 import { useContext } from "react";
@@ -83,7 +83,7 @@ export const Header = ({
                       const selectedOption = options.find(
                         (option) => option.properties.id === element.id
                       );
-                      setNeighbourhood(selectedOption);
+                      setNeighbourhood(selectedOption || null);
                       setShowFavs(false);
                     }}
                   >

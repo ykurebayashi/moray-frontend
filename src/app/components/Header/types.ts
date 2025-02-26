@@ -1,12 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
-import {
-  NeighbourhoodType,
-  SingleNeighbourhoodType,
-} from "../../../hooks/useGetAppInfo";
+import { SingleNeighbourhoodType } from "../../../hooks/useGetAppInfo";
 
 export type HeaderProps = {
   options: SingleNeighbourhoodType[];
-  selectOption: (param: SingleNeighbourhoodType) => void;
+  selectOption: (param: SingleNeighbourhoodType | null) => void;
   currentNeighbourhood: number | null;
-  setNeighbourhood: Dispatch<SetStateAction<SingleNeighbourhoodType>>;
+  setNeighbourhood: (param: SingleNeighbourhoodType | null) => void;
 };

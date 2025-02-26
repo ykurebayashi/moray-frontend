@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import {
   MainContent,
   ModalContainer,
@@ -24,7 +24,7 @@ export const Modal = ({
   const isDarkMode = theme === "dark";
   const { isMobile } = useMobile();
 
-  const notify = (param) =>
+  const notify = (param: string) =>
     toast(param, {
       position: "top-right",
       autoClose: 5000,

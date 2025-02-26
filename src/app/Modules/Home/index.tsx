@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { GeoJSON } from "react-leaflet/GeoJSON";
 import { TileLayer } from "react-leaflet/TileLayer";
 import { MainContainer } from "./style";
@@ -6,11 +6,11 @@ import { MainContainer } from "./style";
 import { Modal } from "../../components/Modal";
 import { Header } from "../../components/Header";
 import { MapContainer } from "react-leaflet/MapContainer";
-import "leaflet/dist/leaflet.css";
 import { useMapFunctions } from "./hook";
 import { useParams } from "react-router";
 import { GeneralContext } from "../../../context/GeneralContext";
 import { useGetAppInfo } from "../../../hooks/useGetAppInfo";
+import "leaflet/dist/leaflet.css";
 
 export const Home = () => {
   const { id } = useParams();
@@ -49,7 +49,7 @@ export const Home = () => {
         options={geojson?.features || []}
         selectOption={(e) => setNeighbourhood(e)}
         currentNeighbourhood={neighbourhood?.properties.id ?? null}
-        setNeighbourhood={setNeighbourhood}
+        setNeighbourhood={(e) => setNeighbourhood(e)}
       />
       <MainContainer $isDarkMode={theme === "dark"}>
         <MapContainer

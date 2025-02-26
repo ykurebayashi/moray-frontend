@@ -3,11 +3,10 @@ import { PublicRoutes } from "./Routes/Routes";
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "./storage/useLocalStorage";
 import { GeneralContext } from "./context/GeneralContext";
-import React from "react";
 
 function App() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [favs, setFavs] = useState([]);
+  const [favs, setFavs] = useState<{ id: number; name: string }[]>([]);
   const { setValue, getValue } = useLocalStorage();
 
   const handleChangeTheme = (param: "light" | "dark") => {

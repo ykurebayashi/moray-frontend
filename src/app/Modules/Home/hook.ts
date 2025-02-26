@@ -13,7 +13,7 @@ export const useMapFunctions = ({
   setNeighbourhood,
   geoJsonRef,
 }: UseMapFunctionsProps) => {
-  const handleClick = (event) => {
+  const handleClick = (event: { sourceTarget: { feature: any } }) => {
     const eventValue = event.sourceTarget.feature;
 
     if (neighbourhood === eventValue) {
@@ -22,7 +22,7 @@ export const useMapFunctions = ({
     return setNeighbourhood(eventValue);
   };
 
-  const handleMouseOver = (event) => {
+  const handleMouseOver = (event: { target: any }) => {
     if (!geoJsonRef.current) return;
     geoJsonRef.current.resetStyle();
 
@@ -30,7 +30,15 @@ export const useMapFunctions = ({
     eventValue.setStyle({ color: "green" });
   };
 
-  const onEachFeatureFunctions = (_, layer) => {
+  const onEachFeatureFunctions = (
+    _: any,
+    layer: {
+      on: (arg0: {
+        mouseover: (event: any) => void;
+        click: (event: { sourceTarget: { feature: any } }) => void;
+      }) => void;
+    }
+  ) => {
     layer.on({
       mouseover: (event) => {
         handleMouseOver(event);

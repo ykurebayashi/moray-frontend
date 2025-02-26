@@ -1,9 +1,6 @@
 {
-  "compilerOptions": {
-    "jsx": "react",
-    "moduleResolution": "bundler",
-    "module": "ESNext",
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
-  }
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" }
+  ]
 }
