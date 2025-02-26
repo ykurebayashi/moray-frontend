@@ -2,7 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { GetGeoJsonItemType } from "../useGetGeoJson";
 
 const getPopulationGrowth = async () => {
-  const response = await fetch("http://localhost:5173/populacao");
+  const baseUrl = window.location.origin;
+  const response = await fetch(`${baseUrl}/populacao`);
   const result = await response.json();
   return result as GetGeoJsonItemType[];
 };
