@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { currentTheme } from "../../style";
 
 export const MainHeader = styled.div`
   height: 10vh;
@@ -12,16 +13,19 @@ export const MainHeader = styled.div`
 `;
 
 export const OptionPill = styled.button<{ $selected?: boolean }>`
-  background: white;
+  background: ${currentTheme.options.background};
   border: none;
-  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 0px 8px 1px ${currentTheme.options.shadow};
   cursor: pointer;
-  padding: 5px;
+  padding: 10px;
   border-radius: 20px;
+  font-weight: 600;
+  color: ${currentTheme.options.text};
+
   ${({ $selected }) =>
     $selected &&
     css`
-      background: #6c58ff33;
+      background: rgba(107, 88, 255, 0.5);
     `}
 `;
 
