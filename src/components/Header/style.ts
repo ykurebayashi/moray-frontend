@@ -11,8 +11,11 @@ export const MainHeader = styled.div`
   width: 100%;
 `;
 
-export const OptionPill = styled.button<{ $selected?: boolean }>`
-  background: white;
+export const OptionPill = styled.button<{
+  $selected?: boolean;
+  $isDarkMode: boolean;
+}>`
+  background: ${({ $isDarkMode }) => ($isDarkMode ? "#1f1f1f" : "white")};
   border: none;
   min-width: 100px;
   height: 30px;
@@ -25,7 +28,7 @@ export const OptionPill = styled.button<{ $selected?: boolean }>`
   white-space: nowrap;
   overflow: hidden;
   text-align: center;
-  color: black;
+  color: ${({ $isDarkMode }) => ($isDarkMode ? "white" : "#1f1f1f")};
 
   ${({ $selected }) =>
     $selected &&

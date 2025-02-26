@@ -27,6 +27,7 @@ export const Header = ({
             <OptionPill
               onClick={() => selectOption(element)}
               $selected={currentNeighbourhood === element.properties.id}
+              $isDarkMode={isDarkMode}
               key={element.properties.id}
             >
               {element.properties.name}
@@ -35,7 +36,7 @@ export const Header = ({
         })}
       </PillsContainer>
       <PillsContainer>
-        <OptionPill onClick={handleChangeTheme}>
+        <OptionPill $isDarkMode={isDarkMode} onClick={handleChangeTheme}>
           {isDarkMode ? "Light" : "Dark"}
         </OptionPill>
       </PillsContainer>
