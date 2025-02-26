@@ -13,6 +13,8 @@ import { useParams } from "react-router";
 
 export const Home = () => {
   const { id } = useParams();
+  const { theme } = useContext(ThemeContext);
+  const geoJsonRef = useRef();
 
   const {
     geojson,
@@ -21,9 +23,6 @@ export const Home = () => {
     usedPopulationData,
     bounds,
   } = useGetAppInfo();
-  const { theme } = useContext(ThemeContext);
-  const geoJsonRef = useRef();
-
   const { onEachFeatureFunctions } = useMapFunctions({
     geoJsonRef,
     neighbourhood,
