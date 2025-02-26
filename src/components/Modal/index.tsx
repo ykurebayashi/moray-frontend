@@ -12,6 +12,7 @@ import {
 import { ModalProps } from "./types";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { ThemeContext } from "../../style/ThemeContext";
+import { ToastContainer, toast } from "react-toastify";
 
 export const Modal = ({
   neighbourhood,
@@ -20,6 +21,16 @@ export const Modal = ({
 }: ModalProps) => {
   const { theme } = useContext(ThemeContext);
   const isDarkMode = theme === "dark";
+  const notify = (param) =>
+    toast(param, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      progress: undefined,
+      theme: isDarkMode ? "dark" : "light",
+      style: { background: "#44c26c", color: "white" },
+    });
 
   const xAxisElements = usedPopulationData.map((element) => element.ano);
   const yAxisValues = usedPopulationData.map((element) => element.populacao);
@@ -43,6 +54,7 @@ export const Modal = ({
             style={{ top: "50px" }}
             $isDarkMode={isDarkMode}
             onClick={() => {
+              notify("Copiado para o clipboard");
               navigator.clipboard.writeText(
                 location.origin + "/" + neighbourhood.id
               );
@@ -78,7 +90,14 @@ export const Modal = ({
           }}
         />
       </ChartContainer>
-      <ActionButton $isDarkMode={isDarkMode}>Favoritar Bairro</ActionButton>
+
+      <ActionButton
+        $isDarkMode={isDarkMode}
+        onClick={() => notify("Adicionado aos favoritos")}
+      >
+        Favoritar Bairro
+      </ActionButton>
+      <ToastContainer />
     </ModalContainer>
   );
 };
