@@ -5,7 +5,9 @@ import {
   NeighbourhoodInfo,
   NeighbourhoodName,
   ChartContainer,
-  CloseButton,
+  ActionButton,
+  TopInfos,
+  FlexRow,
 } from "./style";
 import { ModalProps } from "./types";
 import { BarChart } from "@mui/x-charts/BarChart";
@@ -24,31 +26,35 @@ export const Modal = ({
 
   return (
     <ModalContainer $isDarkMode={isDarkMode}>
-      <CloseButton
-        style={{ top: "50px" }}
-        $isDarkMode={isDarkMode}
-        onClick={() => {
-          navigator.clipboard.writeText(
-            location.origin + "/" + neighbourhood.id
-          );
-        }}
-      >
-        Compartilhar
-      </CloseButton>
-      <CloseButton $isDarkMode={isDarkMode} onClick={onClose}>
-        Fechar
-      </CloseButton>
-      <MainContent>
-        <NeighbourhoodName $isDarkMode={isDarkMode}>
-          {neighbourhood.name}
-        </NeighbourhoodName>
-        <NeighbourhoodInfo $isDarkMode={isDarkMode}>
-          {neighbourhood.setor}
-        </NeighbourhoodInfo>
-        <NeighbourhoodInfo $isDarkMode={isDarkMode}>
-          {neighbourhood.zona}
-        </NeighbourhoodInfo>
-      </MainContent>
+      <TopInfos>
+        <MainContent>
+          <NeighbourhoodName $isDarkMode={isDarkMode}>
+            {neighbourhood.name}
+          </NeighbourhoodName>
+          <NeighbourhoodInfo $isDarkMode={isDarkMode}>
+            {neighbourhood.setor}
+          </NeighbourhoodInfo>
+          <NeighbourhoodInfo $isDarkMode={isDarkMode}>
+            {neighbourhood.zona}
+          </NeighbourhoodInfo>
+        </MainContent>
+        <FlexRow>
+          <ActionButton
+            style={{ top: "50px" }}
+            $isDarkMode={isDarkMode}
+            onClick={() => {
+              navigator.clipboard.writeText(
+                location.origin + "/" + neighbourhood.id
+              );
+            }}
+          >
+            Compartilhar
+          </ActionButton>
+          <ActionButton $isDarkMode={isDarkMode} onClick={onClose}>
+            Fechar
+          </ActionButton>
+        </FlexRow>
+      </TopInfos>
       <ChartContainer>
         <BarChart
           xAxis={[
@@ -72,6 +78,7 @@ export const Modal = ({
           }}
         />
       </ChartContainer>
+      <ActionButton $isDarkMode={isDarkMode}>Favoritar Bairro</ActionButton>
     </ModalContainer>
   );
 };

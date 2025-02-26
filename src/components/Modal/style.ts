@@ -59,12 +59,9 @@ export const ChartContainer = styled.div`
   height: 400px;
 `;
 
-export const CloseButton = styled.button<{ $isDarkMode: boolean }>`
+export const ActionButton = styled.button<{ $isDarkMode: boolean }>`
   border: none;
   background: none;
-  position: absolute;
-  right: 10px;
-  top: 10px;
   cursor: pointer;
   padding: 10px;
   color: ${({ $isDarkMode }) =>
@@ -77,4 +74,16 @@ export const CloseButton = styled.button<{ $isDarkMode: boolean }>`
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
   }
+`;
+
+export const TopInfos = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 15px 10px;
+`;
+
+export const FlexRow = styled.div`
+  display: flex;
 `;
