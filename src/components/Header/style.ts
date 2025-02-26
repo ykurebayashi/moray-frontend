@@ -29,6 +29,7 @@ export const OptionPill = styled.button<{
   overflow: hidden;
   text-align: center;
   color: ${({ $isDarkMode }) => ($isDarkMode ? "white" : "#1f1f1f")};
+  position: relative;
 
   ${({ $selected }) =>
     $selected &&
@@ -44,4 +45,25 @@ export const PillsContainer = styled.div`
   overflow-x: scroll;
   align-items: center;
   padding: 20px;
+`;
+
+export const DropdownMenu = styled.div<{ $isDarkMode: boolean }>`
+  position: absolute;
+  top: 70%;
+  width: 200px;
+  border-radius: 20px;
+  max-height: 300px;
+  overflow-y: scroll;
+  background: ${({ $isDarkMode }) =>
+    $isDarkMode ? "rgba(0, 0, 0, 0.8)" : "rgba(255, 255, 255, 0.8)"};
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid white;
+  padding: 10px;
+`;
+
+export const FavoriteOption = styled.p<{ $isDarkMode: boolean }>`
+  color: ${({ $isDarkMode }) => ($isDarkMode ? "white" : "black")};
 `;
