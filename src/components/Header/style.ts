@@ -71,3 +71,10 @@ export const FavoriteOption = styled.p<{ $isDarkMode: boolean }>`
   color: ${({ $isDarkMode }) => ($isDarkMode ? "white" : "black")};
   cursor: pointer;
 `;
+
+export const CloseButton = styled.button<{ $isDarkMode: boolean }>`
+  background: none;
+  border: none;
+  color: ${({ $isDarkMode }) => ($isDarkMode ? "white" : "black")};
+  cursor: pointer;
+`;

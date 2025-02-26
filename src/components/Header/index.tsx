@@ -5,12 +5,14 @@ import {
   PillsContainer,
   DropdownMenu,
   FavoriteOption,
+  CloseButton,
 } from "./style";
 import { HeaderProps } from "./types";
 import { useContext } from "react";
 import { GeneralContext } from "../../Context/GeneralContext";
 import { useNavigate } from "react-router";
 import { useClickOutside } from "../../hooks/useDetectClickOutside";
+import { FlexRow } from "../Modal/style";
 
 export const Header = ({
   options,
@@ -22,7 +24,7 @@ export const Header = ({
   const ref = useRef<HTMLDivElement>(null);
   useClickOutside(ref, () => setShowFavs(false));
 
-  const { setTheme, theme, favs } = useContext(GeneralContext);
+  const { setTheme, theme, favs, setFavs } = useContext(GeneralContext);
 
   const isDarkMode = theme === "dark";
 
@@ -33,6 +35,10 @@ export const Header = ({
     return setTheme("light");
   };
 
+  const handleDeleteFavorite = (id: number) => {
+    const newValues = favs.filter((element) => element.id !== id);
+    setFavs(newValues);
+  };
   return (
     <MainHeader>
       <PillsContainer>
@@ -63,15 +69,23 @@ export const Header = ({
           <DropdownMenu $isDarkMode={isDarkMode} ref={ref}>
             {favs.map((element) => {
               return (
-                <FavoriteOption
-                  $isDarkMode={isDarkMode}
-                  onClick={() => {
-                    navigate(`/${element.id}`);
-                    setShowFavs(false);
-                  }}
-                >
-                  {element.name}
-                </FavoriteOption>
+                <FlexRow>
+                  <FavoriteOption
+                    $isDarkMode={isDarkMode}
+                    onClick={() => {
+                      navigate(`/${element.id}`);
+                      setShowFavs(false);
+                    }}
+                  >
+                    {element.name}
+                  </FavoriteOption>
+                  <CloseButton
+                    $isDarkMode={isDarkMode}
+                    onClick={() => handleDeleteFavorite(element.id)}
+                  >
+                    X
+                  </CloseButton>
+                </FlexRow>
               );
             })}
           </DropdownMenu>

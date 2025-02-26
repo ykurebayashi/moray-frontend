@@ -86,4 +86,5 @@ export const TopInfos = styled.div`
 
 export const FlexRow = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
