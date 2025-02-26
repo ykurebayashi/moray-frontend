@@ -108,7 +108,7 @@ export const Modal = ({
           return setFavs([...favs, neighbourhood]);
         }}
       >
-        <Star color={darkColorIcons} fill={isFav ? darkColorIcons : ""} />
+        <Star color={darkColorIcons} fill={isFav ? darkColorIcons : "none"} />
         Adicionar aos favoritos
       </ActionButton>
       <ToastContainer />
