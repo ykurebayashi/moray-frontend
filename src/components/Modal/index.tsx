@@ -22,12 +22,20 @@ export const Modal = ({
   const yAxisValues = usedPopulationData.map((element) => element.populacao);
 
   return (
-    <ModalContainer>
-      <CloseButton onClick={onClose}>Fechar</CloseButton>
+    <ModalContainer $isDarkMode={isDarkMode}>
+      <CloseButton $isDarkMode={isDarkMode} onClick={onClose}>
+        Fechar
+      </CloseButton>
       <MainContent>
-        <NeighbourhoodName> {neighbourhood.name}</NeighbourhoodName>
-        <NeighbourhoodInfo>{neighbourhood.setor}</NeighbourhoodInfo>
-        <NeighbourhoodInfo>{neighbourhood.zona}</NeighbourhoodInfo>
+        <NeighbourhoodName $isDarkMode={isDarkMode}>
+          {neighbourhood.name}
+        </NeighbourhoodName>
+        <NeighbourhoodInfo $isDarkMode={isDarkMode}>
+          {neighbourhood.setor}
+        </NeighbourhoodInfo>
+        <NeighbourhoodInfo $isDarkMode={isDarkMode}>
+          {neighbourhood.zona}
+        </NeighbourhoodInfo>
       </MainContent>
       <ChartContainer>
         <BarChart
@@ -45,11 +53,11 @@ export const Modal = ({
             },
           ]}
           width={380}
-          // sx={{
-          //   ".MuiChartsAxis-tickLabel > tspan": {
-          //     fill: currentTheme.modal.title,
-          //   },
-          // }}
+          sx={{
+            ".MuiChartsAxis-tickLabel > tspan": {
+              fill: isDarkMode ? "white" : "black",
+            },
+          }}
         />
       </ChartContainer>
     </ModalContainer>
