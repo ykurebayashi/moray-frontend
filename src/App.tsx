@@ -10,12 +10,12 @@ function App() {
   const [favs, setFavs] = useState([]);
   const { setValue, getValue } = useLocalStorage();
 
-  const handleChangeTheme = (param) => {
+  const handleChangeTheme = (param: "light" | "dark") => {
     setTheme(param);
     setValue("theme", param);
   };
 
-  const handleChangeFavs = (param) => {
+  const handleChangeFavs = (param: { id: number; name: string }[]) => {
     setFavs(param);
     setValue("favs", param);
   };
