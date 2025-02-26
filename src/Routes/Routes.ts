@@ -3,7 +3,7 @@ import { Home } from "../Modules/Home";
 export const PublicRoutes = [
   {
     key: "Home",
-    path: "/",
+    path: "/:id?",
     component: Home,
   },
 ];

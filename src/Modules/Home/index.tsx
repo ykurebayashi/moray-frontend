@@ -9,8 +9,11 @@ import { MapContainer } from "react-leaflet/MapContainer";
 import "leaflet/dist/leaflet.css";
 import { ThemeContext } from "../../style/ThemeContext";
 import { useMapFunctions } from "./hook";
+import { useParams } from "react-router";
 
 export const Home = () => {
+  const { id } = useParams();
+
   const {
     geojson,
     neighbourhood,
@@ -28,6 +31,16 @@ export const Home = () => {
   });
 
   const key = `info-of-${neighbourhood?.properties.id}-${bounds.join(",")}`;
+
+  useEffect(() => {
+    if (id && geojson) {
+      if (!Number(id)) return;
+      const newNeighbour = geojson?.features.find(
+        (element) => element.properties.id === Number(id)
+      );
+      setNeighbourhood(newNeighbour);
+    }
+  }, [id, geojson]);
 
   return (
     <>
