@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useContext, useEffect, useMemo, useRef } from "react";
 import { GeoJSON } from "react-leaflet/GeoJSON";
 import { TileLayer } from "react-leaflet/TileLayer";
 import { MainContainer } from "./style";
@@ -7,7 +7,7 @@ import { Modal } from "../../components/Modal";
 import { Header } from "../../components/Header";
 import { MapContainer } from "react-leaflet/MapContainer";
 import "leaflet/dist/leaflet.css";
-import { useLocalStorage } from "../../storage/useLocalStorage";
+import { ThemeContext } from "../../style/ThemeContext";
 
 export const Home = () => {
   const {
@@ -17,7 +17,7 @@ export const Home = () => {
     usedPopulationData,
     bounds,
   } = useGetAppInfo();
-  const { getValue } = useLocalStorage();
+  const { theme } = useContext(ThemeContext);
   const key = `info-of-${neighbourhood?.properties.id}-${bounds.join(",")}`;
 
   return (
@@ -27,7 +27,7 @@ export const Home = () => {
         selectOption={(e) => setNeighbourhood(e)}
         currentNeighbourhood={neighbourhood?.properties.id ?? null}
       />
-      <MainContainer $isDarkMode={getValue("theme") === "dark"}>
+      <MainContainer $isDarkMode={theme === "dark"}>
         <MapContainer
           bounds={[
             [bounds[1], bounds[0]],

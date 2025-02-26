@@ -1,17 +1,25 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import { PublicRoutes } from "./Routes/Routes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeContext } from "./style/ThemeContext";
 import { useLocalStorage } from "./storage/useLocalStorage";
 
 function App() {
   const [theme, setTheme] = useState("light");
-  const { setValue } = useLocalStorage();
+  const { setValue, getValue } = useLocalStorage();
 
   const handleChangeTheme = (param) => {
     setTheme(param);
     setValue("theme", param);
   };
+
+  useEffect(() => {
+    if (getValue("theme") === "light") {
+      setTheme("ligth");
+    } else {
+      setTheme("dark");
+    }
+  }, []);
 
   return (
     <BrowserRouter>
