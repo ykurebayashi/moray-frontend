@@ -73,6 +73,10 @@ export const ChartContainer = styled.div`
 
 export const ActionButton = styled.button<{ $isDarkMode: boolean }>`
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   background: none;
   cursor: pointer;
   padding: 10px;

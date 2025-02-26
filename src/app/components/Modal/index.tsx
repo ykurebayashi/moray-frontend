@@ -14,6 +14,7 @@ import { BarChart } from "@mui/x-charts/BarChart";
 import { GeneralContext } from "../../../context/GeneralContext";
 import { ToastContainer, toast } from "react-toastify";
 import { useMobile } from "../../../hooks/useMobile";
+import { Share, X, Star } from "react-feather";
 
 export const Modal = ({
   neighbourhood,
@@ -22,6 +23,8 @@ export const Modal = ({
 }: ModalProps) => {
   const { theme, setFavs, favs } = useContext(GeneralContext);
   const isDarkMode = theme === "dark";
+  const darkColorIcons = isDarkMode ? "white" : "black";
+  const isFav = favs.some((element) => element.id === neighbourhood.id);
   const { isMobile } = useMobile();
 
   const notify = (param: string) =>
@@ -63,10 +66,10 @@ export const Modal = ({
               );
             }}
           >
-            Compartilhar
+            <Share color={darkColorIcons} />
           </ActionButton>
           <ActionButton $isDarkMode={isDarkMode} onClick={onClose}>
-            Fechar
+            <X color={darkColorIcons} fill={darkColorIcons} />
           </ActionButton>
         </FlexRow>
       </TopInfos>
@@ -105,6 +108,7 @@ export const Modal = ({
           return setFavs([...favs, neighbourhood]);
         }}
       >
+        <Star color={darkColorIcons} fill={isFav ? darkColorIcons : ""} />
         Adicionar aos favoritos
       </ActionButton>
       <ToastContainer />
