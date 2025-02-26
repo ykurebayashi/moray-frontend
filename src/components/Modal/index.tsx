@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   MainContent,
   ModalContainer,
@@ -9,14 +9,15 @@ import {
 } from "./style";
 import { ModalProps } from "./types";
 import { BarChart } from "@mui/x-charts/BarChart";
-// import { useTheme } from "../../style";
+import { ThemeContext } from "../../style/ThemeContext";
 
 export const Modal = ({
   neighbourhood,
   usedPopulationData,
   onClose,
 }: ModalProps) => {
-  // const { currentTheme } = useTheme();
+  const { theme } = useContext(ThemeContext);
+  const isDarkMode = theme === "dark";
   const xAxisElements = usedPopulationData.map((element) => element.ano);
   const yAxisValues = usedPopulationData.map((element) => element.populacao);
 
