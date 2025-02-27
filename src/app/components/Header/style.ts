@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const MainHeader = styled.div<{ $isMobile: boolean }>`
-  height: 10vh;
   display: flex;
   justify-content: space-between;
   padding: 0 5%;
@@ -51,7 +50,7 @@ export const PillsContainer = styled.div<{ $isMobile: boolean }>`
   max-width: 50%;
   overflow-x: scroll;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 
   ${({ $isMobile }) =>
     $isMobile &&

@@ -11,6 +11,7 @@ import { useParams } from "react-router";
 import { GeneralContext } from "../../../context/GeneralContext";
 import { useGetAppInfo } from "../../../hooks/useGetAppInfo";
 import "leaflet/dist/leaflet.css";
+import { ToastContainer } from "react-toastify";
 
 export const Home = () => {
   const { id } = useParams();
@@ -83,6 +84,7 @@ export const Home = () => {
           />
         )}
       </MainContainer>
+      <ToastContainer />
     </>
   );
 };

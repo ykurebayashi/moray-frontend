@@ -12,7 +12,7 @@ import {
 import { ModalProps } from "./types";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { GeneralContext } from "../../../context/GeneralContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useMobile } from "../../../hooks/useMobile";
 import { Share, X, Star } from "react-feather";
 
@@ -111,7 +111,6 @@ export const Modal = ({
         <Star color={darkColorIcons} fill={isFav ? darkColorIcons : "none"} />
         Adicionar aos favoritos
       </ActionButton>
-      <ToastContainer />
     </ModalContainer>
   );
 };
