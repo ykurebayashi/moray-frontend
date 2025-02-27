@@ -4,7 +4,7 @@ import { HeaderProps } from "./types";
 import { useContext } from "react";
 import { useClickOutside } from "../../../hooks/useDetectClickOutside";
 import { FlexRow } from "../Modal/style";
-import { GeneralContext } from "../../../context/GeneralContext";
+import { GeneralContext } from "../../../Context/GeneralContext";
 import {
   MainHeader,
   CloseButton,

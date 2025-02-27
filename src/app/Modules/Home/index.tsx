@@ -8,7 +8,7 @@ import { Header } from "../../components/Header";
 import { MapContainer } from "react-leaflet/MapContainer";
 import { useMapFunctions } from "./hook";
 import { useParams } from "react-router";
-import { GeneralContext } from "../../../context/GeneralContext";
+import { GeneralContext } from "../../../Context/GeneralContext";
 import { useGetAppInfo } from "../../../hooks/useGetAppInfo";
 import "leaflet/dist/leaflet.css";
 import { ToastContainer } from "react-toastify";

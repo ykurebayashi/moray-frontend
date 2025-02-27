@@ -11,7 +11,7 @@ import {
 } from "./style";
 import { ModalProps } from "./types";
 import { BarChart } from "@mui/x-charts/BarChart";
-import { GeneralContext } from "../../../context/GeneralContext";
+import { GeneralContext } from "../../../Context/GeneralContext";
 import { toast } from "react-toastify";
 import { useMobile } from "../../../hooks/useMobile";
 import { Share, X, Star } from "react-feather";
