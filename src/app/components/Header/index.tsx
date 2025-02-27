@@ -13,7 +13,7 @@ import {
   OptionPill,
   PillsContainer,
 } from "./style";
-import { X } from "react-feather";
+import { Moon, Sun, X } from "react-feather";
 import { useMobile } from "../../../hooks/useMobile";
 
 export const Header = ({
@@ -71,7 +71,7 @@ export const Header = ({
           Favoritos
         </OptionPill>
         <OptionPill $isDarkMode={isDarkMode} onClick={handleChangeTheme}>
-          {isDarkMode ? "Light" : "Dark"}
+          {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
         </OptionPill>
         {showFavs && (
           <DropdownMenu $isDarkMode={isDarkMode} ref={ref}>
